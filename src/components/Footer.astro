@@ -1,0 +1,78 @@
+---
+const year = new Date().getFullYear();
+
+const footerLinks: Record<string, string[]> = {
+  Producto: ['Características', 'Módulos', 'Seguridad', 'Actualizaciones', 'Roadmap'],
+  Empresa: ['Sobre FUERO', 'Blog jurídico', 'Prensa', 'Alianzas', 'Contacto'],
+  Legal: ['Términos de uso', 'Privacidad', 'Cookies', 'RGPD', 'Licencias'],
+};
+
+const socials = [
+  { label: 'LinkedIn', short: 'LI', href: '#' },
+  { label: 'Twitter', short: 'TW', href: '#' },
+  { label: 'YouTube', short: 'YT', href: '#' },
+];
+---
+
+<footer class="border-t border-[var(--color-border)] bg-[var(--color-void)]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-12">
+
+      <!-- Brand col -->
+      <div class="md:col-span-2">
+        <a href="/" class="flex items-center gap-3 mb-5 group" aria-label="FUERO">
+          <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="34" height="34" rx="4" fill="#c9a84c" fill-opacity="0.12"/>
+            <rect x="1" y="1" width="32" height="32" rx="3" stroke="#c9a84c" stroke-opacity="0.4" stroke-width="0.5"/>
+            <path d="M9 8h16M9 17h10M9 26h13" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="25" cy="22" r="4" stroke="#c9a84c" stroke-width="1.2" fill="none"/>
+            <path d="M28.1 25.1L31 28" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="font-display text-xl font-semibold tracking-widest text-[var(--color-ivory)]">FUERO</span>
+        </a>
+        <p class="font-body text-sm text-[var(--color-slate)] leading-relaxed max-w-xs mb-6">
+          La plataforma de gestión jurídica diseñada para los despachos y estudios de derecho más exigentes.
+        </p>
+        <div class="flex items-center gap-3">
+          {socials.map(s => (
+            <a
+              href={s.href}
+              aria-label={s.label}
+              class="font-mono text-xs text-[var(--color-slate)] hover:text-[var(--color-gold)] border border-[var(--color-border)] hover:border-[var(--color-gold)] px-2 py-1 rounded-sm transition-all duration-200"
+            >
+              {s.short}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Links cols -->
+      {Object.entries(footerLinks).map(([cat, links]) => (
+        <div>
+          <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--color-gold)] mb-5">{cat}</p>
+          <ul class="space-y-3">
+            {links.map(link => (
+              <li>
+                <a href="#" class="font-body text-sm text-[var(--color-slate)] hover:text-[var(--color-ivory-dim)] transition-colors duration-200">
+                  {link}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-16 pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="font-mono text-xs text-[var(--color-slate)] tracking-wider">
+        © {year} FUERO Technologies SAS. Todos los derechos reservados.
+      </p>
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+        <span class="font-mono text-xs text-[var(--color-slate)]">Todos los sistemas operativos · 99.9% uptime</span>
+      </div>
+    </div>
+  </div>
+</footer>

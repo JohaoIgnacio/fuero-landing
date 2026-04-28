@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.svelte';
+import Hero from '../components/Hero.svelte';
+import Features from '../components/Features.svelte';
+import Modules from '../components/Modules.svelte';
+import Trust from '../components/Trust.svelte';
+import Pricing from '../components/Pricing.svelte';
+import CTA from '../components/CTA.svelte';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="FUERO — Gestión Jurídica de Élite"
+  description="Plataforma integral para estudios jurídicos, despachos y profesionales del derecho. Gestiona casos, clientes, documentos y audiencias en un solo lugar."
+>
+  <Navbar client:load />
+  <main>
+    <Hero client:load />
+    <Features client:visible />
+    <Modules client:visible />
+    <Trust client:visible />
+    <Pricing client:visible />
+    <CTA client:visible />
+  </main>
+  <Footer />
+</Layout>

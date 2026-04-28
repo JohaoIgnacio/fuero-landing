@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-obsidian: #0a0a0f;
+    --color-void: #111118;
+    --color-surface: #16161e;
+    --color-surface-2: #1e1e2a;
+    --color-border: #2a2a3a;
+    --color-gold: #c9a84c;
+    --color-gold-light: #e4c97a;
+    --color-gold-dim: #8a6d2a;
+    --color-copper: #b87333;
+    --color-ivory: #f5f0e8;
+    --color-ivory-dim: #c8c0b0;
+    --color-slate: #8888a0;
+    --color-accent: #4a7c9e;
+
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Syne', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-sharp: cubic-bezier(0.9, 0, 0.1, 1);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-obsidian);
+    color: var(--color-ivory);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-obsidian);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-obsidian);
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gold-dim);
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-body { font-family: var(--font-body); }
+  .font-mono { font-family: var(--font-mono); }
+
+  .text-gold { color: var(--color-gold); }
+  .text-gold-light { color: var(--color-gold-light); }
+  .text-ivory { color: var(--color-ivory); }
+  .text-ivory-dim { color: var(--color-ivory-dim); }
+  .text-slate { color: var(--color-slate); }
+
+  .bg-obsidian { background-color: var(--color-obsidian); }
+  .bg-void { background-color: var(--color-void); }
+  .bg-surface { background-color: var(--color-surface); }
+  .bg-surface-2 { background-color: var(--color-surface-2); }
+
+  .border-gold { border-color: var(--color-gold); }
+  .border-border { border-color: var(--color-border); }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, var(--color-gold-dim), var(--color-gold), var(--color-gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .noise-bg::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+}
